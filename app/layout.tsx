@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import ThemeProvider from "@/provider/themeprovider";
 import dynamic from "next/dynamic";
+import LenisProvider from "@/provider/LenisProvider";
+import { ScrollProvider } from "@/provider/scrollProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,11 +26,15 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-          <div id="modal"></div>
-          <header className="h-12 border-b">头部</header>
-          <ThemeChanger />
+          <LenisProvider>
+            <ScrollProvider>
+              <header className="h-12 border-b">头部</header>
+              <ThemeChanger />
 
-          <main>{children}</main>
+              <main>{children}</main>
+            </ScrollProvider>
+            <div id="modal"></div>
+          </LenisProvider>
         </ThemeProvider>
       </body>
     </html>

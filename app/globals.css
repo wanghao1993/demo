@@ -9,6 +9,13 @@
   --text-color: white;
 }
 
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.5;
+  font-size: 14px;
+}
+
 
 .light {
   --background-color: #fff;
@@ -21,7 +28,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root:not(.dark):not(.light) {
-    --background-color: #ccc;
+    --background-color: #111827;
     --text-color: #fff;
   }
  
