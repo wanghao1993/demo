@@ -1,3 +1,8 @@
+import Metric1 from "@/components/metric1";
+import Metric2 from "@/components/metric2";
+import { Suspense } from "react";
+import Link from "next/link";
+
 async function getData() {
   const res = await fetch("http://localhost:3001/api/dashboard/metric/");
   // The return value is *not* serialized
@@ -18,6 +23,15 @@ export default async function DashboardPage(datas: any) {
       <div>
         这是仪表盘页面 {datas.params.id} {JSON.stringify(data)}{" "}
       </div>
+      <Link href={"/dashboard/client"}>client</Link>
+
+      <Suspense fallback={<div>Loading metric1...</div>}>
+        <Metric1 />
+      </Suspense>
+
+      <Suspense fallback={<div>Loading metric2...</div>}>
+        <Metric2 />
+      </Suspense>
     </div>
   );
 }
